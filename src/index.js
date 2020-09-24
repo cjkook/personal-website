@@ -8,8 +8,9 @@ import PublicLayout from "./pages/layouts/PublicLayout.jsx";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/public" render={(props) => <PublicLayout {...props} />} />
-      <Redirect from="/" to="/public" />
+      <Route path="/" render={(props) => <PublicLayout {...props} />} />
+      {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
+      <Redirect from="/" to="/home" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

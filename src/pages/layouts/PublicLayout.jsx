@@ -39,7 +39,7 @@ class PublicLayout extends Component {
       if (prop.layout === "/public") {
         return (
           <Route
-            path={prop.layout + prop.path}
+            path={prop.path}
             render={(props) => (
               <prop.component
                 {...props}
@@ -110,22 +110,7 @@ class PublicLayout extends Component {
         
         {/* <Sidebar></Sidebar> */}
         {/* <NavBar></NavBar> */}
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-        </div>
+        
         <Router>
           <Switch>{this.getRoutes(routes)} </Switch>
         </Router>
