@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavigationBar from '../../components/NavigationBar'
 import logo from "../../logo.svg";
 import "./style.css";
 import routes from "../../routes.js";
@@ -109,7 +110,7 @@ class PublicLayout extends Component {
       <>
         
         {/* <Sidebar></Sidebar> */}
-        {/* <NavBar></NavBar> */}
+        <NavigationBar></NavigationBar>
         
         <Router>
           <Switch>{this.getRoutes(routes)} </Switch>
