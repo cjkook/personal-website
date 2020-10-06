@@ -10,7 +10,7 @@ ReactDOM.render(
     <Switch>
       <Route path="/" render={(props) => <PublicLayout {...props} />} />
       {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
-      <Redirect from="/" to="/home" />
+      {/* <Redirect from="/" to="/home" /> */}
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

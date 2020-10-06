@@ -9,15 +9,15 @@ import "./style.css";
 function NavigationBar() {
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+      <Navbar.Brand href="home">cjko-ok</Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
+        <Nav.Link href="portfolio">portfolio</Nav.Link>
+        <Nav.Link href="about">about</Nav.Link>
+        <Nav.Link href="contact">contact</Nav.Link>
       </Nav>
-      <Form inline>
+      {/* <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      </Form>
+      </Form> */}
     </Navbar>
   );
 }
