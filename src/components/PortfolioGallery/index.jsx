@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import { Parallax, Background } from "react-parallax";
 import Badge from "react-bootstrap/Badge";
-import projects from "../projects.js";
+import projects from "../../projects.js";
 
 // view/access public images in build
 // {/* <img src={process.env.PUBLIC_URL + '/img/logo.png'} /> */}
@@ -53,6 +53,7 @@ class Portfolio extends React.Component {
             </Card>
           </CardColumns>
         </Container>
+        <br></br>
       </>
     );
   }

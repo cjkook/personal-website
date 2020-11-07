@@ -6,9 +6,13 @@ import FormControl from "react-bootstrap/FormControl";
 
 import "./style.css";
 
+const styles = {
+  backgroundColor: "white",
+
+};
 function NavigationBar() {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar style={styles} fixed="top">
       <Navbar.Brand href="home">cjko-ok</Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="portfolio">portfolio</Nav.Link>
