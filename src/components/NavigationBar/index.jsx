@@ -1,23 +1,21 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
 
 import "./style.css";
 
 const styles = {
-  backgroundColor: "white",
-
+  backgroundColor: "black",
+  color: "#edddd4",
 };
 function NavigationBar() {
   return (
     <Navbar style={styles} fixed="top">
-      <Navbar.Brand href="home">cjko-ok</Navbar.Brand>
+      <Navbar.Brand href="home"  style={styles}>cjko-ok</Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link href="portfolio">portfolio</Nav.Link>
-        <Nav.Link href="about">about</Nav.Link>
-        <Nav.Link href="contact">contact</Nav.Link>
+        <Nav.Link href="portfolio" style={styles}>portfolio</Nav.Link>
+        <Nav.Link href="about" style={styles}>about</Nav.Link>
+        <Nav.Link href="contact" style={styles}>contact</Nav.Link>
       </Nav>
       {/* <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />

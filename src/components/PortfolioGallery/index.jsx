@@ -11,46 +11,90 @@ import projects from "../../projects.js";
 // {/* <img src={process.env.PUBLIC_URL + '/img/logo.png'} /> */}
 
 const image1 = "./assets/images/processing/01.02.16 oysterium_1.png";
-const insideStyles = {
-  background: "white",
-  padding: 20,
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%,-50%)",
+const styles = {
+  backgroundColor: "black",
+  color: "#edddd4",
 };
 
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      results: 0,
     };
   }
 
-  render() {
-    console.log(projects);
+  // When this component mounts
+  componentDidMount() {
+    this.setState({ results: projects });
+  }
+
+  // assign badge for each project item
+  fnAssignBadge = (tags) => {
+    let badge = "";
+    let text;
+    if (tags.includes("webdev")) {
+      badge = "primary";
+      text = "Web Development";
+    }
+    if (tags.includes("av")) {
+      badge = "danger";
+      text = "A/V";
+    }
+    if (tags.includes("art")) {
+      badge = "info";
+      text = "Creative Coding";
+    }
+    if (tags.includes("audio")) {
+      badge = "light";
+      text = "Audio";
+    }
+    if (tags.includes("design")) {
+      badge = "success";
+      text = "Design";
+    }
+    if (tags.includes("other")) {
+      badge = "secondary";
+      text = "Other";
+    }
+
     return (
       <>
-        <Container><br></br>
+        <Badge variant={badge}>{text}</Badge>{" "}
+      </>
+    );
+  };
+
+  render() {
+    return (
+      <>
+        <Container>
+          <br></br>
           <CardColumns>
-            <Card>
-              <Card.Img
-                variant="top"
-                src={process.env.PUBLIC_URL + projects[1].image}
-              />
-              <Card.Body>
-                <Card.Title>{projects[1].title}</Card.Title>
-                <Card.Text>
-                  This card has supporting text below as a natural lead-in to
-                  additional content.{" "}
-                </Card.Text>
-                <Badge variant="primary">Web Development</Badge>{" "}
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
+            {projects.map((item, index) => {
+              if (!(item.id === 0)) {
+                return (
+                  <Card style={styles} key={item.index}>
+                    <Card.Img
+                      variant="top"
+                      src={process.env.PUBLIC_URL + item.image}
+                    />
+                    <Card.Body>
+                      <Card.Title>{item.title}</Card.Title>
+                      <Card.Text>{/* {item.description} */}</Card.Text>
+                      {item.tags.map((tag,i) => {
+                        console.log(i)
+                        return this.fnAssignBadge(tag)
+                      })}
+                      {/* {this.fnAssignBadge(item.tags)} */}
+                    </Card.Body>
+                    <Card.Footer>
+                      <small className="text-muted">{item.update}</small>
+                    </Card.Footer>
+                  </Card>
+                );
+              }
+            })}
           </CardColumns>
         </Container>
         <br></br>
