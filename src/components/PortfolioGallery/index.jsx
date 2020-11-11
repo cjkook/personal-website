@@ -2,25 +2,24 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import Container from "react-bootstrap/Container";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import { Parallax, Background } from "react-parallax";
 import Badge from "react-bootstrap/Badge";
 import projects from "../../projects.js";
 
 // view/access public images in build
 // {/* <img src={process.env.PUBLIC_URL + '/img/logo.png'} /> */}
 
-const image1 = "./assets/images/processing/01.02.16 oysterium_1.png";
+const image1 = "./assets/images/processing/jumbo-1.png";
 const styles = {
   backgroundColor: "black",
-  color: "#edddd4",
+  // color: "#edddd4",
 };
 
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: 0,
+      projects,
+      hoverId: 0,
     };
   }
 
@@ -29,8 +28,24 @@ class Portfolio extends React.Component {
     this.setState({ results: projects });
   }
 
+  // change bg on hover
+  onHover = (e) => {
+    this.setState({
+      hoverId: e.target.id
+    });
+
+
+    console.log(e.target);
+  };
+
+  onMouseLeave = (e) => {
+    this.setState({
+      hoverId: e.target.id
+    });
+  };
+
   // assign badge for each project item
-  fnAssignBadge = (tags) => {
+  fnAssignBadge = (tags, i) => {
     let badge = "";
     let text;
     if (tags.includes("webdev")) {
@@ -60,12 +75,15 @@ class Portfolio extends React.Component {
 
     return (
       <>
-        <Badge variant={badge}>{text}</Badge>{" "}
+        <Badge key={i} variant={badge}>
+          {text}
+        </Badge>{" "}
       </>
     );
   };
 
   render() {
+    console.log(this.state)
     return (
       <>
         <Container>
@@ -74,23 +92,49 @@ class Portfolio extends React.Component {
             {projects.map((item, index) => {
               if (!(item.id === 0)) {
                 return (
-                  <Card style={styles} key={item.index}>
+                  <Card
+                    style={styles}
+                    key={item.index}
+                    onMouseEnter={this.onHover}
+                    onMouseLeave={this.onMouseLeave}
+                  >
+                    {/* {(item.id === parseInt(this.state.hoverId)) && (
+                      <Card.Header>
+                        <Card.Title>test</Card.Title>
+                      </Card.Header>
+                    )} */}
+
                     <Card.Img
                       variant="top"
                       src={process.env.PUBLIC_URL + item.image}
+                      style={{
+                        opacity: .5,
+                        opacity: (item.id === parseInt(this.state.hoverId)) && 1,
+                      }}
                     />
-                    <Card.Body>
+                    <Card.ImgOverlay
+                      id={item.id}
+                      style={{
+                        opacity: 0,
+                        opacity: (item.id === parseInt(this.state.hoverId)) && 1,
+                      }}
+                    >
                       <Card.Title>{item.title}</Card.Title>
-                      <Card.Text>{/* {item.description} */}</Card.Text>
-                      {item.tags.map((tag,i) => {
-                        console.log(i)
-                        return this.fnAssignBadge(tag)
+                      <Card.Text>{item.brief}</Card.Text>
+                      {item.tags.map((tag, i) => {
+                        return this.fnAssignBadge(tag, i);
                       })}
-                      {/* {this.fnAssignBadge(item.tags)} */}
-                    </Card.Body>
-                    <Card.Footer>
-                      <small className="text-muted">{item.update}</small>
-                    </Card.Footer>
+                    </Card.ImgOverlay>
+
+                    {/* <Card.Body>
+                        <Card.Text>{item.brief}</Card.Text>
+                        {item.tags.map((tag, i) => {
+                          return this.fnAssignBadge(tag, i);
+                        })}
+                      </Card.Body>
+                      <Card.Footer>
+                        <small className="text-muted">{item.update}</small>
+                      </Card.Footer> */}
                   </Card>
                 );
               }

@@ -62,28 +62,33 @@ class Home extends React.Component {
         </Parallax>
 
         <Jumbotron style={jumboStyles}>
-          <h1>Hello, world!</h1>
-          <p>
-            This is a simple hero unit, a simple jumbotron-style component for
-            calling extra attention to featured content or information.
-          </p>
-          <p>{/* <Button variant="primary">Learn more</Button> */}</p>
+          <Container>
+            <h1>Hello, world!</h1>
+            <p>
+              This is a simple hero unit, a simple jumbotron-style component for
+              calling extra attention to featured content or information.
+            </p>
+            <p>{/* <Button variant="primary">Learn more</Button> */}</p>
+          </Container>
+
+          <Portfolio></Portfolio>
         </Jumbotron>
 
         <Parallax bgImage={image5} strength={500}>
-          <Portfolio></Portfolio>
+          {/* <Portfolio></Portfolio> */}
         </Parallax>
         <Jumbotron style={jumboStyles}>
-          <h1>Hello, world!</h1>
-          <p>
-            This is a simple hero unit, a simple jumbotron-style component for
-            calling extra attention to featured content or information.
-          </p>
-          <p>{/* <Button variant="primary">Learn more</Button> */}</p>
+          <Container>
+            <h1>Hello, world!</h1>
+            <p>
+              This is a simple hero unit, a simple jumbotron-style component for
+              calling extra attention to featured content or information.
+            </p>
+          </Container>
         </Jumbotron>
 
         <Parallax bgImage={image4} strength={500}>
-          <div style={{ height: 80 }}>
+          <div style={{ height: 500 }}>
             <div style={insideStyles}>HTML inside the parallax</div>
           </div>
         </Parallax>
