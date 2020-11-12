@@ -3,3 +3,7 @@
   transform: translate(-50%,-50%);
   background-color: black;
 }
+
+.card {
+  border-radius: 80%
+}

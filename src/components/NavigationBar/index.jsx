@@ -18,13 +18,13 @@ function NavigationBar() {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="portfolio" style={styles}>
-            portfolio
+            // portfolio
           </Nav.Link>
           <Nav.Link href="about" style={styles}>
-            about
+            / about
           </Nav.Link>
           <Nav.Link href="contact" style={styles}>
-            contact
+            | contact
           </Nav.Link>
         </Nav>
         {/* <Form inline>

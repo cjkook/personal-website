@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 import projects from "../../projects.js";
 
 // view/access public images in build
@@ -11,10 +12,14 @@ import projects from "../../projects.js";
 const image1 = "./assets/images/processing/jumbo-1.png";
 const styles = {
   backgroundColor: "black",
-  // color: "#edddd4",
 };
 
-class Portfolio extends React.Component {
+const hoverStyles = {
+  backgroundColor: "black",
+  opacity: 0.75,
+};
+
+class PortfolioGallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,116 +30,145 @@ class Portfolio extends React.Component {
 
   // When this component mounts
   componentDidMount() {
-    this.setState({ results: projects });
+    let projectsSorted = (array) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i);
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+      return array;
+    };
+    this.setState({ results: projectsSorted(projects) });
   }
 
   // change bg on hover
   onHover = (e) => {
-    this.setState({
-      hoverId: e.target.id
-    });
+    this.setState({ hoverId: e.target.id });
 
-
-    console.log(e.target);
+    // console.log(e.target);
   };
 
   onMouseLeave = (e) => {
+    // this.setState({ hoverId: 0 });
+  };
+
+  filterByBadge = (e) => {
     this.setState({
-      hoverId: e.target.id
+      filteredBadge: e.target.badge,
     });
   };
 
   // assign badge for each project item
-  fnAssignBadge = (tags, i) => {
+  fnAssignBadge = (tag, i) => {
     let badge = "";
     let text;
-    if (tags.includes("webdev")) {
+    if (tag.includes("webdev")) {
       badge = "primary";
       text = "Web Development";
     }
-    if (tags.includes("av")) {
+    if (tag.includes("av")) {
       badge = "danger";
       text = "A/V";
     }
-    if (tags.includes("art")) {
+    if (tag.includes("art")) {
       badge = "info";
       text = "Creative Coding";
     }
-    if (tags.includes("audio")) {
+    if (tag.includes("audio")) {
       badge = "light";
       text = "Audio";
     }
-    if (tags.includes("design")) {
+    if (tag.includes("design")) {
       badge = "success";
       text = "Design";
     }
-    if (tags.includes("other")) {
+    if (tag.includes("other")) {
       badge = "secondary";
       text = "Other";
     }
 
     return (
       <>
-        <Badge key={i} variant={badge}>
+        <Badge
+          style={{
+            margin: 2,
+          }}
+          key={i}
+          variant={badge}
+          badge={tag}
+        >
           {text}
-        </Badge>{" "}
+        </Badge>
       </>
     );
   };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <>
         <Container>
+          <>
+            <Button variant="outline-dark">Featured</Button>{" "}
+            <Button variant="outline-primary">Web Development</Button>{" "}
+            <Button variant="outline-info">Creative Coding</Button>{" "}
+            <Button variant="outline-secondary">Audio</Button>{" "}
+            <Button variant="outline-success">Design</Button>{" "}
+            <Button variant="outline-warning">Writing/Storytelling</Button>{" "}
+            <Button variant="outline-danger">A/V</Button>{" "}
+            <Button variant="outline-light">Other</Button>{" "}
+          </>
           <br></br>
+          <br></br>
+
           <CardColumns>
             {projects.map((item, index) => {
+              let values = [0.65, 0];
+              if (item.id == this.state.hoverId) {
+                values = [1, 1];
+              }
+
               if (!(item.id === 0)) {
                 return (
-                  <Card
-                    style={styles}
-                    key={item.index}
-                    onMouseEnter={this.onHover}
-                    onMouseLeave={this.onMouseLeave}
-                  >
-                    {/* {(item.id === parseInt(this.state.hoverId)) && (
-                      <Card.Header>
-                        <Card.Title>test</Card.Title>
-                      </Card.Header>
-                    )} */}
+                  <Card style={styles} key={item.index}>
+                    {/* <Card.Header>
+                      <Card.Title></Card.Title>
+                    </Card.Header> */}
 
                     <Card.Img
-                      variant="top"
                       src={process.env.PUBLIC_URL + item.image}
                       style={{
-                        opacity: .5,
-                        opacity: (item.id === parseInt(this.state.hoverId)) && 1,
+                        opacity: values[0],
                       }}
                     />
+
                     <Card.ImgOverlay
                       id={item.id}
+                      onMouseEnter={this.onHover}
+                      onMouseLeave={this.onMouseLeave}
                       style={{
-                        opacity: 0,
-                        opacity: (item.id === parseInt(this.state.hoverId)) && 1,
+                        opacity: values[1],
                       }}
                     >
-                      <Card.Title>{item.title}</Card.Title>
-                      <Card.Text>{item.brief}</Card.Text>
-                      {item.tags.map((tag, i) => {
-                        return this.fnAssignBadge(tag, i);
-                      })}
-                    </Card.ImgOverlay>
+                      <div style={hoverStyles}>
+                        <Card.Title
+                          style={{
+                            padding: 10,
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
 
-                    {/* <Card.Body>
-                        <Card.Text>{item.brief}</Card.Text>
-                        {item.tags.map((tag, i) => {
-                          return this.fnAssignBadge(tag, i);
-                        })}
-                      </Card.Body>
-                      <Card.Footer>
-                        <small className="text-muted">{item.update}</small>
-                      </Card.Footer> */}
+                        <Card.Footer>
+                          {item.tags.map((tag, i) => {
+                            return this.fnAssignBadge(tag, i);
+                          })}
+                          <br></br>
+                          <small className="text-muted">{item.update}</small>
+                        </Card.Footer>
+                      </div>
+                    </Card.ImgOverlay>
                   </Card>
                 );
               }
@@ -147,7 +181,7 @@ class Portfolio extends React.Component {
   }
 }
 
-export default Portfolio;
+export default PortfolioGallery;
 
 {
   /* <div>
