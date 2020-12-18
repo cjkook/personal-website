@@ -51,6 +51,7 @@ class ProjectPage extends React.Component {
         <Parallax bgImage={image1} strength={500}>
           <div style={{ height: 200 }}></div>
         </Parallax>
+        <PortfolioGallery></PortfolioGallery>
 
       </>
     );

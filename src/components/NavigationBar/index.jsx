@@ -13,19 +13,19 @@ function NavigationBar() {
   return (
     <Navbar style={styles} fixed="top">
       <Container>
-        <Navbar.Brand href="home" style={styles}>
+        <Navbar.Brand href="#" style={styles}>
           cjko-ok
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="portfolio" style={styles}>
+          <Nav.Link href="#portfolio" style={styles}>
             // portfolio
           </Nav.Link>
-          <Nav.Link href="about" style={styles}>
+          <Nav.Link href="#about" style={styles}>
             / about
           </Nav.Link>
-          <Nav.Link href="contact" style={styles}>
+          {/* <Nav.Link href="#contact" style={styles}>
             | contact
-          </Nav.Link>
+          </Nav.Link> */}
         </Nav>
         {/* <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />

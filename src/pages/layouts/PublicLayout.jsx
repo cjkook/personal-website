@@ -45,7 +45,6 @@ class PublicLayout extends Component {
               <prop.component
                 {...props}
                 // handleClick={this.handleNotificationClick}
-                // palette={this.state.palette}
                 // handleInputChange={this.handleInputChange}
               />
             )}
@@ -96,7 +95,7 @@ class PublicLayout extends Component {
   // };
 
   render() {
-    // ! auto sidebar
+    // todo auto sidebar
     // <Sidebar
     //       {...this.props}
     //       routes={routes}

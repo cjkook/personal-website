@@ -14,7 +14,7 @@ ReactDOM.render(
     <NavigationBar />
     <BrowserRouter>
       <Switch>
-        <Route path="/:id" children={<ProjectPage />} />
+        <Route path="/portfolio/:id" children={<ProjectPage />} />
         <Route path="/" render={(props) => <PublicLayout {...props} />} />
         {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
         {/* <Redirect from="/" to="/home" /> */}
