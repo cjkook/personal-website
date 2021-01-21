@@ -9,6 +9,30 @@ import projects from "../../projects.js";
 // view/access public images in build
 // {/* <img src={process.env.PUBLIC_URL + '/img/logo.png'} /> */}
 
+let tagLookup = (cl) => {
+  if (cl === "primary") {
+    return "webdev";
+  }
+  if (cl === "danger") {
+    return "av";
+  }
+  if (cl === "info") {
+    return "art";
+  }
+  if (cl === "light") {
+    return "audio";
+  }
+  if (cl === "success") {
+    return "design";
+  }
+  if (cl === "warning") {
+    return "storytelling";
+  }
+  if (cl === "secondary") {
+    return "other";
+  }
+};
+
 const image1 = "./assets/images/processing/jumbo-1.png";
 const styles = {
   backgroundColor: "black",
@@ -24,6 +48,7 @@ class PortfolioGallery extends React.Component {
     super(props);
     this.state = {
       projects,
+      results:[],
       hoverId: 0,
     };
   }
@@ -53,9 +78,32 @@ class PortfolioGallery extends React.Component {
     // this.setState({ hoverId: 0 });
   };
 
+  // filter the gallery by the selected tag
   filterByBadge = (e) => {
+    // derive tag from class name
+    let text = e.target.className;
+    let badge = text.slice(text.indexOf("e-") + 2);
+    badge = tagLookup(badge);
+    console.log(badge);
+
+    // filter function
+    let projectsFiltered = (array) => {
+      let results=[];
+      array.forEach((item) => {
+        let found = item.tags.find((tag) => tag === badge);
+        if (found) {
+          results.push(item);
+        }
+      });
+      console.log(results);
+      if (results) {
+        return results;
+      }
+    };
+
     this.setState({
-      filteredBadge: e.target.badge,
+      filteredBadge: badge,
+      results: projectsFiltered(projects),
     });
   };
 
@@ -110,20 +158,36 @@ class PortfolioGallery extends React.Component {
       <>
         <Container>
           <>
-            <Button variant="outline-dark">Featured</Button>{" "}
-            <Button variant="outline-primary">Web Development</Button>{" "}
-            <Button variant="outline-info">Creative Coding</Button>{" "}
-            <Button variant="outline-secondary">Audio</Button>{" "}
-            <Button variant="outline-success">Design</Button>{" "}
-            <Button variant="outline-warning">Writing/Storytelling</Button>{" "}
-            <Button variant="outline-danger">A/V</Button>{" "}
-            <Button variant="outline-light">Other</Button>{" "}
+            {/* <Button onClick={this.filterByBadge} variant="outline-dark">
+              Featured
+            </Button>{" "} */}
+            <Button onClick={this.filterByBadge} variant="outline-primary">
+              Web Development
+            </Button>{" "}
+            <Button onClick={this.filterByBadge} variant="outline-info">
+              Creative Coding
+            </Button>{" "}
+            <Button onClick={this.filterByBadge} variant="outline-secondary">
+              Audio
+            </Button>{" "}
+            <Button onClick={this.filterByBadge} variant="outline-success">
+              Design
+            </Button>{" "}
+            {/* <Button onClick={this.filterByBadge} variant="outline-warning">
+              Writing/Storytelling
+            </Button>{" "} */}
+            <Button onClick={this.filterByBadge} variant="outline-danger">
+              A/V
+            </Button>{" "}
+            <Button onClick={this.filterByBadge} variant="outline-light">
+              Other
+            </Button>{" "}
           </>
           <br></br>
           <br></br>
 
           <CardColumns>
-            {projects.map((item, index) => {
+            {this.state.results.map((item, index) => {
               let values = [0.65, 0];
               if (item.id == this.state.hoverId) {
                 values = [1, 1];

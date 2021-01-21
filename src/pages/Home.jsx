@@ -22,28 +22,14 @@ const insideStyles = {
   left: "50%",
   transform: "translate(-50%,-50%)",
 };
-const sketchStyles = {
-  display:"flex",
-  zIndex: 10,
-  position: "fixed",
-};
 const videoStyles = {
   width: "100%",
-  position: "absolute",
-  zIndex: 1,
 };
 const primeJumboStyle = {
-  position: "absolute",
-  zIndex: 1,
   height: "100%",
 };
 const jumboStyles = {
-  justifyContent: 'center',
   backgroundColor: "black",
-  position: "absolute",
-  marginTop: "10%",
-  marginLeft: "20%",
-  zIndex: 1,
   color: "#edddd4",
 };
 const jumboStylesAlt = {
@@ -62,6 +48,17 @@ class Home extends React.Component {
   render() {
     return (
       <>
+        <Sketch
+          className="position-sticky"
+          // style={sketchStyles}
+          paletteUrl={
+            "https://coolors.co/283d3b-197278-83a8a6-edddd4-d99185-c44536-b592a0-772e25"
+          }
+        />
+        <Parallax style={primeJumboStyle} bgImage={image5} strength={500}>
+          <div style={{ height: 200 }}></div>
+        </Parallax>
+
         <Jumbotron style={jumboStyles} id="portfolio">
           <Container>
             <h1>Portfolio</h1>
@@ -72,32 +69,18 @@ class Home extends React.Component {
             <p>{/* <Button variant="primary">Learn more</Button> */}</p>
           </Container>
           <PortfolioGallery
-            style={{ position: "absolute", zIndex: 1 }}
+            style={{ position: "relative", zIndex: 1 }}
           ></PortfolioGallery>
         </Jumbotron>
-        <Sketch
-          className="position-sticky"
-          style={sketchStyles}
-          paletteUrl={
-            "https://coolors.co/283d3b-197278-83a8a6-edddd4-d99185-c44536-b592a0-772e25"
-          }
-        />
-        <Parallax style={primeJumboStyle} bgImage={image5} strength={500}>
-          <div style={{ height: 200 }}></div>
-        </Parallax>
 
-        <Jumbotron style={jumboStyles}>
+        {/* <Jumbotron style={jumboStyles}>
           <video width="100%" height="400" autoPlay muted>
             <source
               src="./assets/images/portfolioPics/axidraw_demo.mp4"
               type="video/mp4"
             />
           </video>
-        </Jumbotron>
-
-        <Parallax style={primeJumboStyle} bgImage={image3} strength={500}>
-          <div style={{ height: 500 }}></div>
-        </Parallax>
+        </Jumbotron> */}
 
         {/* <Jumbotron style={jumboStyles}>
           <Container>
@@ -139,10 +122,9 @@ class Home extends React.Component {
 
         <Jumbotron style={jumboStyles} id="about">
           <Container>
-            <h1>About Me</h1>
+            <h1>Corey J. Kothenbeutel</h1>
             <p>
-              This is a simple hero unit, a simple jumbotron-style component for
-              calling extra attention to featured content or information.
+              A problem solver at my core, I also harness my curiosity to explore the landscapes of technology.  My experience spans music technology, interactive art installations, the A/V industry, education, and web development.
             </p>
           </Container>
         </Jumbotron>

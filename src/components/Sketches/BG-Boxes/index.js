@@ -45,7 +45,7 @@ class SketchBox extends React.Component {
 
             fnc.drawPat = function (gra, x, y, w, h, count) {
               const maxCount = 7;
-              const noiseSp = 1 / 2000;
+              const noiseSp = 1 / 1000;
               const noiseScaleY = 1 / 8000;
               let nv = p5.noise(x, y * noiseScaleY, noiseSp * p5.frameCount);
               let divRatio = p5.constrain(nv, 0.1, 0.9);
@@ -56,10 +56,11 @@ class SketchBox extends React.Component {
                 fnc.drawPat(gra, x, y, w, h1, count + 1);
                 fnc.drawPat(gra, x, y + h1, w, h2, count + 1);
               } else {
-                // gra.noStroke();
+                
+                gra.noStroke();
                 gra.stroke(255);
                 gra.fill(p5.random(tempPalette));
-                gra.rect(x, y+p5.random(400), w, h1*5);
+                gra.rect(x, y+p5.random(100), w, h1*5);
                 gra.fill(p5.random(tempPalette));
                 gra.rect(x, y + h1, w, h2*8);
               }
@@ -91,7 +92,7 @@ class SketchBox extends React.Component {
               p5.image(gra, 0, 0, w, h, 0, sy, gra.width, sh);
               p5.pop();
               if (count % 2 == 0) {
-                // noStroke();
+                p5.noStroke();
                 p5.fill(0, 20);
                 p5.rect(x, 0, w, p5.height);
               }
