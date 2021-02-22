@@ -237,11 +237,17 @@ class PortfolioGallery extends React.Component {
                         >
                           {item.title}
                         </Card.Title>
+<<<<<<< HEAD
                         <Card.Body
                           style={{
                             padding: 10,
                           }}
                         >
+=======
+                        <Card.Body style={{
+                            padding: 10,
+                          }}>
+>>>>>>> a9157ec40f9db2d631d246aa51945144cba461ba
                           {item.brief}
                         </Card.Body>
                         <Card.Footer>
