@@ -48,7 +48,7 @@ class PortfolioGallery extends React.Component {
     super(props);
     this.state = {
       projects,
-      results:[],
+      results: [],
       hoverId: 0,
     };
   }
@@ -88,7 +88,7 @@ class PortfolioGallery extends React.Component {
 
     // filter function
     let projectsFiltered = (array) => {
-      let results=[];
+      let results = [];
       array.forEach((item) => {
         let found = item.tags.find((tag) => tag === badge);
         if (found) {
@@ -160,7 +160,7 @@ class PortfolioGallery extends React.Component {
           <>
             {/* <Button onClick={this.filterByBadge} variant="outline-dark">
               Featured
-            </Button>{" "} */}
+            </Button>{" "}
             <Button onClick={this.filterByBadge} variant="outline-primary">
               Web Development
             </Button>{" "}
@@ -173,18 +173,16 @@ class PortfolioGallery extends React.Component {
             <Button onClick={this.filterByBadge} variant="outline-success">
               Design
             </Button>{" "}
-            {/* <Button onClick={this.filterByBadge} variant="outline-warning">
+            <Button onClick={this.filterByBadge} variant="outline-warning">
               Writing/Storytelling
-            </Button>{" "} */}
+            </Button>{" "}
             <Button onClick={this.filterByBadge} variant="outline-danger">
               A/V
             </Button>{" "}
             <Button onClick={this.filterByBadge} variant="outline-light">
               Other
-            </Button>{" "}
+            </Button>{" "} */}
           </>
-          <br></br>
-          <br></br>
 
           <CardColumns>
             {this.state.results.map((item, index) => {
@@ -223,7 +221,11 @@ class PortfolioGallery extends React.Component {
                         >
                           {item.title}
                         </Card.Title>
-
+                        <Card.Body style={{
+                            padding: 10,
+                          }}>
+                          {item.brief}
+                        </Card.Body>
                         <Card.Footer>
                           {item.tags.map((tag, i) => {
                             return this.fnAssignBadge(tag, i);

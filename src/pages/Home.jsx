@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import { Parallax, Background } from "react-parallax";
 import PortfolioGallery from "../components/PortfolioGallery";
+import AboutCard from "../components/AboutCard";
 import Sketch from "../components/Sketches/BG-Boxes/index.js";
 
 // palette used
@@ -55,17 +56,31 @@ class Home extends React.Component {
             "https://coolors.co/283d3b-197278-83a8a6-edddd4-d99185-c44536-b592a0-772e25"
           }
         />
-        <Parallax style={primeJumboStyle} bgImage={image5} strength={500}>
+        {/* <Parallax style={primeJumboStyle} bgImage={image5} strength={500}>
           <div style={{ height: 200 }}></div>
+        </Parallax> */}
+        <Jumbotron style={jumboStyles} id="about">
+          <Container>
+            <AboutCard></AboutCard>
+            <h1>Corey J. Kothenbeutel</h1>
+            <p>
+              I see myself as a problem solver at my core. To that end I harness
+              my natural curiosity to explore the landscapes of technology, art,
+              education, and music. My experience spans recording studios,
+              interactive art installations, the A/V industry, classrooms, and
+              web development.
+            </p>
+          </Container>
+        </Jumbotron>
+
+        <Parallax bgImage={image4} strength={500}>
+          <div style={{ height: 500 }}></div>
         </Parallax>
 
         <Jumbotron style={jumboStyles} id="portfolio">
           <Container>
             <h1>Portfolio</h1>
-            <p>
-              This is a simple hero unit, a simple jumbotron-style component for
-              calling extra attention to featured content or information.
-            </p>
+            <p></p>
             <p>{/* <Button variant="primary">Learn more</Button> */}</p>
           </Container>
           <PortfolioGallery
@@ -120,21 +135,9 @@ class Home extends React.Component {
           </div>
         </Parallax>
 
-        <Jumbotron style={jumboStyles} id="about">
-          <Container>
-            <h1>Corey J. Kothenbeutel</h1>
-            <p>
-              A problem solver at my core, I also harness my curiosity to explore the landscapes of technology.  My experience spans music technology, interactive art installations, the A/V industry, education, and web development.
-            </p>
-          </Container>
-        </Jumbotron>
-
-        <Parallax bgImage={image4} strength={500}>
-          <div style={{ height: 500 }}></div>
-        </Parallax>
         <Jumbotron style={jumboStylesAlt}>
           <h1>Thanks!</h1>
-          <p>Copyright.</p>
+          <p>	&copy; 2021 Corey J. Kothenbeutel</p>
           <p>{/* <Button variant="primary">Learn more</Button> */}</p>
         </Jumbotron>
       </>
