@@ -41,7 +41,9 @@ class SketchBox extends React.Component {
             // instantiate graphics
             gra = p5.createGraphics(100, p5.height * 20);
 
-            columns = p5.int(p5.random(0,4));
+            // randomize each load
+            // columns = p5.int(p5.random(0,4));
+            columns = 0;
 
             fnc.drawPat = function (gra, x, y, w, h, count) {
               const maxCount = 7;
@@ -66,7 +68,7 @@ class SketchBox extends React.Component {
               }
             };
 
-            p5.createCanvas(window.innerWidth, window.innerHeight).parent(
+            p5.createCanvas(window.innerWidth-5, 300  ).parent(
               parentRef
             );
           }}
