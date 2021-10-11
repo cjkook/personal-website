@@ -7,7 +7,7 @@ import ProjectPage from "./pages/Home.jsx";
 // import SketchThree from "views/SketchThree.jsx";
 const routes = [
   {
-    path: "/\d\d",
+    path: "/",
     name: "Project View ",
     icon: "pe-7s-notebook",
     component: ProjectPage,

@@ -5,7 +5,7 @@ document {
 }
 
 body {
-  background-color: black;
+  background-color: #edddd4;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Ubuntu", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -17,97 +17,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-/* overwritten bootstrap  */
-.btn-outline-primary,
-.badge-primary {
-  color: #EDDDD4;
-  border-color: #197278;
-}
-
-.btn-outline-primary:hover,
-.badge-primary {
-  background-color: #197278;
-  border-color: #197278;
-}
-
-.btn-outline-secondary,
-.badge-secondary {
-  color: #EDDDD4;
-  border-color: #283d3b;
-}
-
-.btn-outline-secondary:hover,
-.badge-secondary {
-  background-color: #283d3b;
-  border-color: #283d3b;
-}
-
-.btn-outline-success,
-.badge-success {
-  color: #EDDDD4;
-  border-color: #83a8a6;
-}
-
-.btn-outline-success:hover,
-.badge-success {
-  background-color: #83a8a6;
-  border-color: #83a8a6;
-  color: black;
-}
-
-.btn-outline-warning,
-.badge-warning {
-  color: #EDDDD4;
-  border-color: #e8c547;
-}
-
-.btn-outline-warning:hover,
-.badge-warning {
-  background-color: #e8c547;
-  border-color: #e8c547;
-}
-
-.btn-outline-danger,
-.badge-danger {
-  color: #EDDDD4;
-  border-color: #772e25;
-}
-
-.btn-outline-danger:hover,
-.badge-danger {
-  background-color: #772e25;
-  border-color: #772e25;
-}
-
-.btn-outline-info,
-.badge-info {
-  color: #EDDDD4;
-  border-color: #c44536;
-}
-
-.btn-outline-info:hover,
-.badge-info {
-  background-color: #c44536;
-  border-color: #c44536;
-}
-
-.btn-outline-light,
-.badge-light {
-  background-color: black;
-  color: #EDDDD4;
-  border-color: black;
-}
-
-.btn-outline-dark,
-.badge-dark {
-  color: #EDDDD4;
-  border-color: #E1AB66;
-}
-
-.btn-outline-dark:hover, .badge-dark {
-  background-color: #E1AB66;
-  color: black;
-  border-color: #E1AB66;
 }

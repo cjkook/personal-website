@@ -1,7 +1,7 @@
 import React from "react";
 import Sketch from "react-p5";
 import "./styles.css";
-import fnc from "../functions";
+import fnc from "../functions/coolors-index";
 
 // * AUTHOR: Sayama (https://www.openprocessing.org/user/159668)
 
@@ -16,7 +16,7 @@ const CYCLE = 400;
 class SketchBox extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {};
+    this.state = {};
   }
   _onMouseMove(e) {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
@@ -24,7 +24,6 @@ class SketchBox extends React.Component {
 
   // When this component mounts
   componentDidMount() {
-    console.log(this.props.paletteUrl);
     palette = this.props.paletteUrl;
     tempPalette = fnc.createCols(palette);
     // lineCol = tempPalette.splice(1, tempPalette.length - 1);
@@ -39,15 +38,16 @@ class SketchBox extends React.Component {
           // * SETUP
           setup={(p5, parentRef) => {
             // instantiate graphics
-            gra = p5.createGraphics(100, p5.height * 20);
+            gra = p5.createGraphics(100, p5.height * 20 );
+            
 
             // randomize each load
             // columns = p5.int(p5.random(0,4));
-            columns = 0;
+            columns = 4;
 
             fnc.drawPat = function (gra, x, y, w, h, count) {
               const maxCount = 7;
-              const noiseSp = 1 / 1000;
+              const noiseSp = 1 / 2000;
               const noiseScaleY = 1 / 8000;
               let nv = p5.noise(x, y * noiseScaleY, noiseSp * p5.frameCount);
               let divRatio = p5.constrain(nv, 0.1, 0.9);
@@ -89,11 +89,11 @@ class SketchBox extends React.Component {
 
               p5.push();
               p5.translate(x, -yOffset);
-              let shaerRad = count % columns == 0 ? -p5.PI / columns : p5.PI / columns / 2;
+              let shaerRad = count % columns === 0 ? -p5.PI / columns : p5.PI / columns / 2;
               p5.shearY(shaerRad);
-              p5.image(gra, 0, 0, w, h, 0, sy, gra.width, sh);
+              p5.image(gra, 0, 50, w, h, 0, sy, gra.width, sh);
               p5.pop();
-              if (count % 2 == 0) {
+              if (count % 2 === 0) {
                 p5.noStroke();
                 p5.fill(0, 20);
                 p5.rect(x, 0, w, p5.height);

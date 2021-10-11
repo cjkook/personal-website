@@ -33,7 +33,6 @@ let tagLookup = (cl) => {
   }
 };
 
-const image1 = "./assets/images/processing/jumbo-1.png";
 const styles = {
   backgroundColor: "black",
 };
@@ -169,33 +168,6 @@ class PortfolioGallery extends React.Component {
     return (
       <>
         <Container>
-          <>
-            {/* <Button onClick={this.filterByBadge} variant="outline-dark">
-              Featured
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-primary">
-              Web Development
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-info">
-              Creative Coding
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-secondary">
-              Audio
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-success">
-              Design
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-warning">
-              Writing/Storytelling
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-danger">
-              A/V
-            </Button>{" "}
-            <Button onClick={this.filterByBadge} variant="outline-light">
-              Other
-            </Button>{" "} */}
-          </>
-
           <CardColumns>
             {this.state.results.map((item, index) => {
               let values = [0.65, 0];
@@ -237,17 +209,11 @@ class PortfolioGallery extends React.Component {
                         >
                           {item.title}
                         </Card.Title>
-<<<<<<< HEAD
                         <Card.Body
                           style={{
                             padding: 10,
                           }}
                         >
-=======
-                        <Card.Body style={{
-                            padding: 10,
-                          }}>
->>>>>>> a9157ec40f9db2d631d246aa51945144cba461ba
                           {item.brief}
                         </Card.Body>
                         <Card.Footer>

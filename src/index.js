@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import PublicLayout from "./pages/layouts/PublicLayout.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
-import Home from "./pages/Home.jsx";
 
 import NavigationBar from "./components/NavigationBar";
 
